@@ -10,6 +10,12 @@ defmodule EmailTest do
       }
     }
 
-    assert {:ok, ^bot_configuration} = Agala.Provider.Email.init(bot_configuration)
+    expected_bot_configuration = Map.put(
+      bot_configuration, :private, %{
+        mail_fetcher_module: Agala.Provider.Email.Protocol.Pop3.Mock
+      }
+    )
+
+    assert {:ok, ^expected_bot_configuration} = Agala.Provider.Email.init(bot_configuration)
   end
 end
