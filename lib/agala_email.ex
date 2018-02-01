@@ -7,7 +7,7 @@ defmodule Agala.Provider.Email do
   @pop3 Agala.Provider.Email.Protocol.Pop3
   @pop3_mock Agala.Provider.Email.Protocol.Pop3.Mock
 
-  def init(bot_params) do
+  def init(bot_params, _) do
     {
       :ok,
       Map.put(
