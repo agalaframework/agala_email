@@ -1,4 +1,4 @@
-defmodule Agala.Provider.Telegram.Helpers do
+defmodule Agala.Provider.Email.Helpers do
   import Bamboo.Email
 
   def send_message(to, from, subject, message, mailer) do
