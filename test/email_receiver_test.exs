@@ -16,7 +16,7 @@ defmodule EmailReceiverTest do
   }
 
   test "get_updates call applies handler" do
-    {:ok, bot_params} = Email.init(@bot_configuration)
-    assert [:ok, :ok, :ok] == Receiver.get_updates(fn _ -> :ok end, bot_params)
+    {:ok, bot_params} = Email.init(@bot_configuration, :receiver)
+    assert bot_params == Receiver.get_updates(fn _ -> :ok end, bot_params)
   end
 end

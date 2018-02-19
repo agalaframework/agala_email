@@ -4,7 +4,6 @@ defmodule Agala.Provider.Email.Receiver do
   """
   use Agala.Bot.Receiver
   alias Agala.BotParams
-  @mail_proto Agala.Provider.Email.Protocol.Pop3.Mock
 
   def get_updates(notify_with, bot_params = %BotParams{}) do
     mail_proto = private_options(bot_params)
@@ -19,17 +18,11 @@ defmodule Agala.Provider.Email.Receiver do
       mail_proto.parse_binary(bin_message)
       |> resolve_mail(notify_with)
     end)
-    :timer.sleep 1_000
+    :timer.sleep 5_000
     bot_params
   end
 
-  defp mail_options(%BotParams{
-        provider_params: %{
-          login: login, email: email, password: password, server: server,
-          port: port
-        }
-      }
-  ), do: %{email: email, password: password, server: server, port: port, login: login}
+  defp mail_options(%BotParams{} = opts), do: Map.get(opts, :provider_params)
 
   defp private_options(%BotParams{
         private: %{
