@@ -27,9 +27,8 @@ defmodule AgalaEmail.MixProject do
       {:ex_doc, "> 0.0.0", only: :dev},
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:pop3mail, "~> 1.3"},
-      {:erlpop, github: "nico-amsterdam/erlpop"}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      {:erlpop, github: "nico-amsterdam/erlpop"},
+      {:bamboo, "~> 0.8"}
     ]
   end
 
