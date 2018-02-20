@@ -18,7 +18,7 @@ defmodule Agala.Provider.Email do
 
   defmacro __using__(:handler) do
     quote location: :keep do
-      import Agala.Provider.Telegram.Helpers
+      import Agala.Provider.Email.Helpers
     end
   end
 end
