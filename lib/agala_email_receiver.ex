@@ -18,11 +18,13 @@ defmodule Agala.Provider.Email.Receiver do
       mail_proto.parse_binary(bin_message)
       |> resolve_mail(notify_with)
     end)
-    :timer.sleep 5_000
+    :timer.sleep updates_interval(bot_params)
     bot_params
   end
 
   defp mail_options(%BotParams{} = opts), do: Map.get(opts, :provider_params)
+
+  defp updates_interval(%BotParams{provider_params: %{updates_interval: interval}}), do: interval
 
   defp private_options(%BotParams{
         private: %{
