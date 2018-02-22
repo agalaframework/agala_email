@@ -12,13 +12,18 @@ defmodule Agala.Provider.Email.Receiver do
     {:ok, mails} = mail_proto.scan(client)
 
     Enum.map(mails, fn {id, _} ->
-      #@todo: use poolboy and asynk tasks
+      # @todo: use poolboy and asynk tasks
       {:ok, bin_message} = mail_proto.retrieve(client, id)
 
       mail_proto.parse_binary(bin_message)
       |> resolve_mail(notify_with)
+
+      mail_proto.delete(client, id)
     end)
-    :timer.sleep updates_interval(bot_params)
+
+    mail_proto.disconnect(client)
+
+    :timer.sleep(updates_interval(bot_params))
     bot_params
   end
 
@@ -27,11 +32,11 @@ defmodule Agala.Provider.Email.Receiver do
   defp updates_interval(%BotParams{provider_params: %{updates_interval: interval}}), do: interval
 
   defp private_options(%BotParams{
-        private: %{
-          mail_fetcher_module: mail_fetcher_module
-        }
-     }
-  ), do: mail_fetcher_module
+         private: %{
+           mail_fetcher_module: mail_fetcher_module
+         }
+       }),
+       do: mail_fetcher_module
 
   defp resolve_mail({h, c}, notify_with) do
     notify_with.({h, c})
