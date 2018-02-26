@@ -11,7 +11,8 @@ defmodule EmailReceiverTest do
       password: "secure",
       server: "mail.server.ru",
       port: 995,
-      email: "user@example.com"
+      email: "user@example.com",
+      updates_interval: 5 * 1_000
     }
   }
 
