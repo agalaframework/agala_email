@@ -11,6 +11,8 @@ defmodule Agala.Provider.Email.Receiver do
     {:ok, client} = mail_proto.connect(mail_options(bot_params))
     {:ok, mails} = mail_proto.scan(client)
 
+    Logger.debug("Email retrieving started. Total count of messages in box: #{length(mails)}")
+
     Enum.map(mails, fn {id, _} ->
       # @todo: use poolboy and asynk tasks
       {:ok, bin_message} = mail_proto.retrieve(client, id)
