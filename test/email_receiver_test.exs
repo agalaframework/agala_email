@@ -2,8 +2,7 @@ defmodule EmailReceiverTest do
   use ExUnit.Case
   doctest Agala.Provider.Email
   alias Agala.BotParams
-  alias Agala.Provider.Email
-  alias Agala.Provider.Email.Receiver
+  alias Agala.Provider.Email.Poller
 
   @bot_configuration %BotParams{
     provider_params: %{
@@ -17,7 +16,7 @@ defmodule EmailReceiverTest do
   }
 
   test "get_updates call applies handler" do
-    {:ok, bot_params} = Email.init(@bot_configuration, :receiver)
-    assert bot_params == Receiver.get_updates(fn _ -> :ok end, bot_params)
+    {:ok, bot_params} = Poller.bootstrap(@bot_configuration)
+    assert {_updates, ^bot_params} = Poller.get_updates(bot_params)
   end
 end
