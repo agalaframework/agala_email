@@ -6,10 +6,22 @@ defmodule EmailTest do
   test "init returns :ok and bot params" do
     bot_configuration = %BotParams{
       provider_params: %{
-        username: "user", password: "secure", server: "mail.server.ru"
+        username: "user",
+        password: "secure",
+        server: "mail.server.ru"
       }
     }
 
-    assert {:ok, ^bot_configuration} = Agala.Provider.Email.init(bot_configuration)
+    expected_bot_configuration =
+      Map.put(
+        bot_configuration,
+        :private,
+        %{
+          mail_fetcher_module: Agala.Provider.Email.Protocol.Pop3.Mock
+        }
+      )
+
+    assert {:ok, ^expected_bot_configuration} =
+             Agala.Provider.Email.Poller.bootstrap(bot_configuration)
   end
 end

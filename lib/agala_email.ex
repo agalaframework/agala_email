@@ -1,14 +1,13 @@
 defmodule Agala.Provider.Email do
+  use Agala.Provider
+
   @moduledoc """
   Module providing email connection.
   """
 
-  use Agala.Provider
-
-  def init(bot_params) do
-    {
-      :ok,
-      bot_params
-    }
+  defmacro __using__(:handler) do
+    quote location: :keep do
+      import Agala.Provider.Email.Helpers
+    end
   end
 end
