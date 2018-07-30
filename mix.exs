@@ -23,7 +23,7 @@ defmodule AgalaEmail.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:agala, "~> 2.0.2"},
+      {:agala, github: "Victoria91/agala", branch: "move-to-agala-2-0-5-with-plugs-for-facebook"},
       {:ex_doc, "> 0.0.0", only: :dev},
       {:credo, "~> 0.8", only: [:dev, :test]},
       {:pop3mail, "~> 1.3"},
