@@ -1,5 +1,5 @@
 %{
-  "agala": {:git, "https://github.com/Victoria91/agala.git", "f4ccb8688d067fd3e7018d2cb4bc72f14bab119e", [branch: "move-to-agala-2-0-5-with-plugs-for-facebook"]},
+  "agala": {:hex, :agala, "2.5.0", "e619345343b060312133564c7f4c05fd1b9f34a5c3917dcd5bfddbdbe1a68587", [:mix], [], "hexpm"},
   "bamboo": {:hex, :bamboo, "0.8.0", "573889a3efcb906bb9d25a1c4caa4ca22f479235e1b8cc3260d8b88dabeb4b14", [:mix], [{:hackney, "~> 1.6", [hex: :hackney, repo: "hexpm", optional: false]}, {:plug, "~> 1.0", [hex: :plug, repo: "hexpm", optional: false]}, {:poison, ">= 1.5.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm"},
   "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm"},
   "certifi": {:hex, :certifi, "2.3.1", "d0f424232390bf47d82da8478022301c561cf6445b5b5fb6a84d49a9e76d2639", [], [{:parse_trans, "3.2.0", [hex: :parse_trans, repo: "hexpm", optional: false]}], "hexpm"},
