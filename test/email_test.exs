@@ -16,6 +16,6 @@ defmodule EmailTest do
       }
     )
 
-    assert {:ok, ^expected_bot_configuration} = Agala.Provider.Email.init(bot_configuration)
+    assert {:ok, ^expected_bot_configuration} = Agala.Provider.Email.init(bot_configuration, :receiver)
   end
 end

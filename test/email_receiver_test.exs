@@ -11,12 +11,13 @@ defmodule EmailReceiverTest do
       password: "secure",
       server: "mail.server.ru",
       port: 995,
-      email: "user@example.com"
+      email: "user@example.com",
+      updates_interval: 5 * 1_000
     }
   }
 
   test "get_updates call applies handler" do
-    {:ok, bot_params} = Email.init(@bot_configuration)
-    assert [:ok, :ok, :ok] == Receiver.get_updates(fn _ -> :ok end, bot_params)
+    {:ok, bot_params} = Email.init(@bot_configuration, :receiver)
+    assert bot_params == Receiver.get_updates(fn _ -> :ok end, bot_params)
   end
 end
