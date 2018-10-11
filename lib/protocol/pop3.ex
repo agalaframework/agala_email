@@ -4,6 +4,10 @@ defmodule Agala.Provider.Email.Protocol.Pop3 do
   Based on nico-amsterdam/pop3mail
   """
 
+  def connect(%{email: email, password: password, server: server, port: port, login: login}) do
+    :epop_client.connect(email, password, [{:addr, server}, {:port, port}, {:user, login}, :ssl])
+  end
+
   def connect(%{email: email, password: password, server: server, port: port}) do
     :epop_client.connect(email, password, [{:addr, server}, {:port, port}, {:user, email}, :ssl])
   end

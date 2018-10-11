@@ -4,7 +4,7 @@ defmodule AgalaEmail.MixProject do
   def project do
     [
       app: :agala_email,
-      version: "2.5.0",
+      version: "2.5.1",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       description: description(),
