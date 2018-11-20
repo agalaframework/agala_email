@@ -8,7 +8,7 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
-config :agala_email, fetcher: Agala.Provider.Email.Protocol.Pop3 
+config :agala_email, fetcher: Agala.Provider.Email.Protocol.Pop3.Mock 
 
 # You can configure your application as:
 #
@@ -29,4 +29,4 @@ config :agala_email, fetcher: Agala.Provider.Email.Protocol.Pop3
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-import_config "#{Mix.env}.exs"
+# import_config "#{Mix.env}.exs"
